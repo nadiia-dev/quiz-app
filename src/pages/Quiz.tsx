@@ -35,9 +35,9 @@ const Quiz = () => {
 
   useEffect(() => {
     if (isCompleted) {
-      navigate("/results");
+      navigate("/summary", { state: { userAnswers: userAnswers } });
     }
-  }, [isCompleted, navigate]);
+  }, [isCompleted, navigate, userAnswers]);
 
   return (
     <div className="flex flex-col">

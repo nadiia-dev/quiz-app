@@ -1,7 +1,15 @@
+import { useLocation } from "react-router-dom";
 import questions from "../../questions";
 import QuizCompleted from "../assets/winner.png";
 
-const Summary = ({ userAnswers }: { userAnswers: (string | null)[] }) => {
+interface QuizResults {
+  userAnswers: (string | null)[];
+}
+
+const Summary = () => {
+  const location = useLocation();
+  const { userAnswers } = (location.state as QuizResults) || {};
+
   const skipped = userAnswers.filter((answer) => answer === null);
   const correct = userAnswers.filter(
     (answer, index) => answer === questions[index].answers[0]

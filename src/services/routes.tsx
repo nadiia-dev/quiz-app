@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import Quiz from "../pages/Quiz";
 import App from "../App";
-import ResultsPage from "../pages/ResultsPage";
 import Home from "../pages/Home";
+import Summary from "../pages/Summary";
 
 const router = createBrowserRouter([
   {
@@ -11,7 +11,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "quiz", element: <Quiz /> },
-      { path: "results", element: <ResultsPage /> },
+      { path: "summary", element: <Summary /> },
     ],
   },
 ]);
