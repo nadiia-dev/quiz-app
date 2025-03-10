@@ -1,5 +1,6 @@
 import { useState } from "react";
 import questions from "../../questions";
+import Timer from "./Timer";
 
 const Quiz = () => {
   const [userAnswers, setUserAnswers] = useState<string[]>([]);
@@ -7,10 +8,11 @@ const Quiz = () => {
   const currentQuestion = userAnswers.length;
   const isCompleted = currentQuestion === questions.length;
 
-  const selectAnswer = (selected: string) => {
-    setUserAnswers((prevState) => {
-      return [...prevState, selected];
-    });
+  const selectAnswer = (selected: string | null) => {
+    if (selected)
+      setUserAnswers((prevState) => {
+        return [...prevState, selected];
+      });
   };
 
   if (isCompleted) {
@@ -27,6 +29,7 @@ const Quiz = () => {
   return (
     <div className="bg-indigo-950 w-full max-w-lg lg:max-w-3xl flex items-center justify-center p-4 rounded-lg shadow-lg">
       <div className="p-4 max-w-lg text-center">
+        <Timer timeout={10000} onTimeout={() => selectAnswer(null)} />
         <h2 className="text-sky-50 text-sm">
           {questions[currentQuestion].text}
         </h2>
