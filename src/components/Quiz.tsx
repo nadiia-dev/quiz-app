@@ -5,12 +5,24 @@ const Quiz = () => {
   const [userAnswers, setUserAnswers] = useState<string[]>([]);
 
   const currentQuestion = userAnswers.length;
+  const isCompleted = currentQuestion === questions.length;
 
   const selectAnswer = (selected: string) => {
     setUserAnswers((prevState) => {
       return [...prevState, selected];
     });
   };
+
+  if (isCompleted) {
+    return (
+      <div>
+        <h2>Quiz completed</h2>
+      </div>
+    );
+  }
+
+  const shuffledAnswers = [...questions[currentQuestion].answers];
+  shuffledAnswers.sort(() => Math.random() - 0.5);
 
   return (
     <div className="bg-indigo-950 w-full max-w-lg lg:max-w-3xl flex items-center justify-center p-4 rounded-lg shadow-lg">
@@ -19,7 +31,7 @@ const Quiz = () => {
           {questions[currentQuestion].text}
         </h2>
         <ul className="mt-4 space-y-3">
-          {questions[currentQuestion].answers.map((answer, index) => (
+          {shuffledAnswers.map((answer, index) => (
             <li key={index}>
               <button
                 type="button"
