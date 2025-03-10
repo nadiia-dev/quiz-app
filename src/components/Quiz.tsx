@@ -39,7 +39,7 @@ const Quiz = () => {
               <button
                 type="button"
                 onClick={() => selectAnswer(answer)}
-                className="w-full bg-sky-500 text-white text-md py-2 px-10 rounded-full transition-all duration-300 hover:bg-purple-500 focus:bg-purple-500 sm:px-12 md:px-14 lg:px-16"
+                className="w-full bg-sky-500 text-black text-sm py-2 px-10 rounded-full transition-all duration-300 hover:bg-purple-500 focus:bg-purple-500 sm:px-12 md:px-14 lg:px-16"
               >
                 {answer}
               </button>

@@ -28,3 +28,25 @@ h1 {
 button {
   cursor: pointer;
 }
+
+progress {
+  width: 100%;
+  appearance: none;
+  border-radius: 1.5rem;
+  background-color: rgba(106, 90, 205, 0.7);
+}
+
+progress::-webkit-progress-bar {
+  background-color: rgba(106, 90, 205, 0.7);
+  border-radius: 1.5rem;
+}
+
+progress::-webkit-progress-value {
+  background-color: #e6a8f3;
+  border-radius: 1.5rem;
+}
+
+progress::-moz-progress-bar {
+  background-color: #e6a8f3;
+  border-radius: 1.5rem;
+}

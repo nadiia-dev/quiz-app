@@ -16,7 +16,13 @@ const Timer = ({ timeout, onTimeout }: Props) => {
     setInterval(() => setTimerValue((prevState) => prevState - 100), 100);
   }, []);
 
-  return <progress max={timeout} value={timerValue} />;
+  return (
+    <progress
+      max={timeout}
+      value={timerValue}
+      className="w-full h-2 mb-4 bg-gray-200 rounded-full appearance-none"
+    />
+  );
 };
 
 export default Timer;
