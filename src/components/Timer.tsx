@@ -2,16 +2,19 @@ import { useEffect, useState } from "react";
 
 interface Props {
   timeout: number;
-  onTimeout: () => void;
+  onTimeout: (() => void) | null;
 }
 
 const Timer = ({ timeout, onTimeout }: Props) => {
   const [timerValue, setTimerValue] = useState(timeout);
 
   useEffect(() => {
-    const timeotVal = setTimeout(onTimeout, timeout);
+    if (!onTimeout) return;
+
+    const timeoutVal = setTimeout(onTimeout, timeout);
+
     return () => {
-      clearTimeout(timeotVal);
+      clearTimeout(timeoutVal);
     };
   }, [timeout, onTimeout]);
 
@@ -25,13 +28,7 @@ const Timer = ({ timeout, onTimeout }: Props) => {
     };
   }, []);
 
-  return (
-    <progress
-      max={timeout}
-      value={timerValue}
-      className="w-full h-2 mb-4 bg-gray-200 rounded-full appearance-none"
-    />
-  );
+  return <progress max={timeout} value={timerValue} />;
 };
 
 export default Timer;

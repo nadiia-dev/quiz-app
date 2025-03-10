@@ -20,6 +20,13 @@ const Question = ({ index, onSelectAnswer, onSkipAnswer }: Props) => {
     isCorrect: false,
   });
 
+  let timer = 10000;
+  if (selectedAnswer.answer) {
+    timer = 1000;
+  }
+  if (selectedAnswer.isCorrect !== null) {
+    timer = 2000;
+  }
   const handleSelectAnswer = (answer: string | null) => {
     if (answer === null) answer = "";
     setSelectedAnswer({ answer, isCorrect: null });
@@ -46,7 +53,11 @@ const Question = ({ index, onSelectAnswer, onSkipAnswer }: Props) => {
 
   return (
     <div className="p-4 max-w-lg text-center">
-      <Timer timeout={10000} onTimeout={onSkipAnswer} />
+      <Timer
+        key={timer}
+        timeout={timer}
+        onTimeout={selectedAnswer.answer === "" ? onSkipAnswer : null}
+      />
       <h2 className="text-sky-50 text-sm">{questions[index].text}</h2>
       <Answers
         answers={questions[index].answers}

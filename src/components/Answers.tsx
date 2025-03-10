@@ -15,8 +15,6 @@ const Answers = ({ answers, selectedAnswer, answerState, onSelect }: Props) => {
     shuffledAnswers.current.sort(() => Math.random() - 0.5);
   }
 
-  console.log(selectedAnswer, answerState);
-
   return (
     <ul className="mt-4 space-y-3">
       {shuffledAnswers.current.map((answer, index) => {
