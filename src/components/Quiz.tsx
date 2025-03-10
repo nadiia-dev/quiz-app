@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 import questions from "../../questions";
 import Question from "./Question";
+import Summary from "./Summary";
 
 const Quiz = () => {
   const [userAnswers, setUserAnswers] = useState<(string | null)[]>([]);
@@ -25,11 +26,7 @@ const Quiz = () => {
   );
 
   if (isCompleted) {
-    return (
-      <div>
-        <h2>Quiz completed</h2>
-      </div>
-    );
+    return <Summary userAnswers={userAnswers} />;
   }
 
   return (
