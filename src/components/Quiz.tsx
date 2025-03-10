@@ -12,11 +12,9 @@ const Quiz = () => {
   const handleSelectAnswer = useCallback(function handleSelectAnswer(
     selected: string | null
   ) {
-    if (selected !== null) {
-      setUserAnswers((prevState) => {
-        return [...prevState, selected];
-      });
-    }
+    setUserAnswers((prevState) => {
+      return [...prevState, selected];
+    });
   },
   []);
 
