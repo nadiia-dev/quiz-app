@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import questions from "../../questions";
-import Question from "./Question";
-import Summary from "./Summary";
+import Question from "../components/Question";
+import Summary from "../components/Summary";
 
 const Quiz = () => {
   const [userAnswers, setUserAnswers] = useState<(string | null)[]>([]);
