@@ -14,32 +14,51 @@ const Summary = ({ userAnswers }: { userAnswers: (string | null)[] }) => {
     (correct.length / userAnswers.length) * 100
   );
   const wrongPercentage = 100 - skippedPecentage - correctPecentage;
+
   return (
-    <div>
-      <img src={QuizCompleted} alt="quiz trophy" />
-      <h2>Quiz completed</h2>
-      <div>
-        <p>
-          <span>{skippedPecentage}%</span>
-          <span>skipped</span>
+    <div className="flex flex-col items-center bg-gradient-to-r from-purple-800 to-purple-600 text-white p-6 rounded-lg shadow-lg max-w-lg mx-auto">
+      <img src={QuizCompleted} alt="quiz trophy" className="w-24 h-24 mb-4" />
+      <h2 className="text-2xl font-bold mb-6">Quiz completed</h2>
+
+      <div className="flex justify-around w-full mb-6">
+        <p className="flex flex-col items-center">
+          <span className="text-3xl font-semibold">{skippedPecentage}%</span>
+          <span className="text-sm text-gray-200">skipped</span>
         </p>
-        <p>
-          <span>{correctPecentage}%</span>
-          <span>answered correctly</span>
+        <p className="flex flex-col items-center">
+          <span className="text-3xl font-semibold">{correctPecentage}%</span>
+          <span className="text-sm text-gray-200">answered correctly</span>
         </p>
-        <p>
-          <span>{wrongPercentage}%</span>
-          <span>answered incorrectly</span>
+        <p className="flex flex-col items-center">
+          <span className="text-3xl font-semibold">{wrongPercentage}%</span>
+          <span className="text-sm text-gray-200">answered incorrectly</span>
         </p>
       </div>
-      <ol>
-        {userAnswers.map((answer, index) => (
-          <li key={index}>
-            <h3>{index + 1}</h3>
-            <p>{questions[index].text}</p>
-            <p>{answer ?? "skipped"}</p>
-          </li>
-        ))}
+
+      <ol className="w-full space-y-6 text-center">
+        {userAnswers.map((answer, index) => {
+          const isCorrect = answer === questions[index].answers[0];
+
+          return (
+            <li key={index} className="flex flex-col items-center">
+              <h3 className="w-10 h-10 flex items-center justify-center rounded-full bg-black text-white text-lg font-bold mb-2">
+                {index + 1}
+              </h3>
+              <p className="text-gray-300">{questions[index].text}</p>
+              <p
+                className={`font-semibold ${
+                  answer
+                    ? isCorrect
+                      ? "text-green-400"
+                      : "text-red-400"
+                    : "text-gray-400"
+                }`}
+              >
+                {answer ?? "Skipped"}
+              </p>
+            </li>
+          );
+        })}
       </ol>
     </div>
   );
