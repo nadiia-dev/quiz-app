@@ -9,11 +9,20 @@ const Timer = ({ timeout, onTimeout }: Props) => {
   const [timerValue, setTimerValue] = useState(timeout);
 
   useEffect(() => {
-    setTimeout(onTimeout, timeout);
+    const timeotVal = setTimeout(onTimeout, timeout);
+    return () => {
+      clearTimeout(timeotVal);
+    };
   }, [timeout, onTimeout]);
 
   useEffect(() => {
-    setInterval(() => setTimerValue((prevState) => prevState - 100), 100);
+    const interval = setInterval(
+      () => setTimerValue((prevState) => prevState - 100),
+      100
+    );
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   return (
