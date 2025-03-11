@@ -1,41 +1,22 @@
-import { useCallback, useEffect, useState } from "react";
-import questions from "../../questions";
+import { useCallback, useEffect } from "react";
 import Question from "../components/Question";
 import { useNavigate } from "react-router-dom";
+import useQuizStore from "../store";
 
 const Quiz = () => {
   const navigate = useNavigate();
-  const [userAnswers, setUserAnswers] = useState<(string | null)[]>([]);
+  const { userAnswers, isCompleted, selectAnswer, skipAnswer, handleExitQuiz } =
+    useQuizStore();
 
   const currentQuestion = userAnswers.length;
-  const isCompleted = currentQuestion === questions.length;
 
-  const handleSelectAnswer = useCallback(function handleSelectAnswer(
-    selected: string | null
-  ) {
-    setUserAnswers((prevState) => {
-      return [...prevState, selected];
-    });
-  },
-  []);
+  const handleSelectAnswer = useCallback(selectAnswer, [selectAnswer]);
 
-  const handleSkipAnswer = useCallback(
-    () => handleSelectAnswer(null),
-    [handleSelectAnswer]
-  );
-
-  const handleExitQuiz = () => {
-    setUserAnswers((prevState) => {
-      const questionsLeft = Array(questions.length - prevState.length).fill(
-        null as string | null
-      );
-      return [...prevState, ...questionsLeft];
-    });
-  };
+  const handleSkipAnswer = useCallback(skipAnswer, [skipAnswer]);
 
   useEffect(() => {
     if (isCompleted) {
-      navigate("/summary", { state: { userAnswers: userAnswers } });
+      navigate("/summary");
     }
   }, [isCompleted, navigate, userAnswers]);
 
