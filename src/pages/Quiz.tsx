@@ -5,10 +5,20 @@ import useQuizStore from "../store";
 
 const Quiz = () => {
   const navigate = useNavigate();
-  const { userAnswers, isCompleted, selectAnswer, skipAnswer, handleExitQuiz } =
-    useQuizStore();
+  const {
+    userAnswers,
+    isCompleted,
+    setStartTime,
+    selectAnswer,
+    skipAnswer,
+    handleExitQuiz,
+  } = useQuizStore();
 
   const currentQuestion = userAnswers.length;
+
+  useEffect(() => {
+    setStartTime();
+  }, [setStartTime]);
 
   const handleSelectAnswer = useCallback(selectAnswer, [selectAnswer]);
 

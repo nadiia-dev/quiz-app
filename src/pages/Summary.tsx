@@ -1,9 +1,15 @@
+import { useMemo } from "react";
 import questions from "../../questions";
 import QuizCompleted from "../assets/winner.png";
 import useQuizStore from "../store";
 
 const Summary = () => {
   const userAnswers = useQuizStore((state) => state.userAnswers);
+  const startTime = useQuizStore((state) => state.startTime);
+
+  const overalTime = useMemo(() => {
+    return startTime ? Math.floor((Date.now() - startTime) / 1000) : null;
+  }, [startTime]);
 
   const skipped = userAnswers.filter((answer) => answer === null);
   const correct = userAnswers.filter(
@@ -22,6 +28,8 @@ const Summary = () => {
     <div className="flex flex-col items-center bg-gradient-to-r from-purple-800 to-purple-600 text-white p-6 rounded-lg shadow-lg max-w-lg mx-auto">
       <img src={QuizCompleted} alt="quiz trophy" className="w-24 h-24 mb-4" />
       <h2 className="text-2xl font-bold mb-6">Quiz completed</h2>
+
+      <p className="mb-5 font-bold">Total time: {overalTime} seconds</p>
 
       <div className="flex justify-around w-full mb-6">
         <p className="flex flex-col items-center">
