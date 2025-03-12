@@ -13,7 +13,7 @@ const Summary = () => {
 
   const skipped = userAnswers.filter((answer) => answer === null);
   const correct = userAnswers.filter(
-    (answer, index) => answer === questions[index].answers[0]
+    (answer, index) => answer === questions[index].answers[0].answer
   );
 
   const skippedPecentage = Math.round(
@@ -48,7 +48,7 @@ const Summary = () => {
 
       <ol className="w-full space-y-6 text-center">
         {userAnswers.map((answer, index) => {
-          const isCorrect = answer === questions[index].answers[0];
+          const isCorrect = answer === questions[index].answers[0].answer;
 
           return (
             <li key={index} className="flex flex-col items-center">
