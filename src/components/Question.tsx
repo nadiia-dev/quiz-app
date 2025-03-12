@@ -26,7 +26,7 @@ const Question = ({ index, onSelectAnswer, onSkipAnswer }: Props) => {
     if (selectedAnswer.answer === "") {
       setTimer(15000);
     } else if (selectedAnswer.isCorrect !== null) {
-      setTimer(2000);
+      setTimer(3000);
     } else {
       setTimer(1000);
     }
@@ -39,7 +39,7 @@ const Question = ({ index, onSelectAnswer, onSkipAnswer }: Props) => {
     setTimeout(() => {
       setSelectedAnswer({
         answer,
-        isCorrect: questions[index].answers[0] === answer,
+        isCorrect: questions[index].answers[0].answer === answer,
       });
 
       setTimeout(() => {
@@ -56,6 +56,8 @@ const Question = ({ index, onSelectAnswer, onSkipAnswer }: Props) => {
     answerState = "answered";
   }
 
+  const allAnswers = questions[index].answers.map((answer) => answer);
+
   return (
     <div className="p-4 max-w-lg text-center">
       <Timer
@@ -65,7 +67,7 @@ const Question = ({ index, onSelectAnswer, onSkipAnswer }: Props) => {
       />
       <h2 className="text-sky-50 text-sm">{questions[index].text}</h2>
       <Answers
-        answers={questions[index].answers}
+        answers={allAnswers}
         answerState={answerState}
         selectedAnswer={selectedAnswer.answer}
         onSelect={handleSelectAnswer}

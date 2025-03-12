@@ -3,180 +3,262 @@ export default [
     id: "q1",
     text: "What is React?",
     answers: [
-      "A JavaScript library for building user interfaces",
-      "A framework for server-side rendering",
-      "A programming language",
-      "A database",
+      {
+        answer: "A JavaScript library for building user interfaces",
+        explanation:
+          "React is a JavaScript library used for building user interfaces, especially for single-page applications.",
+      },
+      {
+        answer: "A framework for server-side rendering",
+        explanation:
+          "This is incorrect. React is a library, not a full framework.",
+      },
+      {
+        answer: "A programming language",
+        explanation:
+          "This is incorrect. React is not a programming language; it is a JavaScript library.",
+      },
+      {
+        answer: "A database",
+        explanation:
+          "This is incorrect. React is not a database, it's a library for building UI.",
+      },
     ],
-    explanations: {
-      correct:
-        "React is a JavaScript library used for building user interfaces, especially for single-page applications.",
-      incorrect: [
-        "A framework for server-side rendering: This is not correct. React is primarily for building user interfaces, not for server-side rendering (though it can be used in SSR with additional tools).",
-        "A programming language: React is not a programming language. It's a JavaScript library.",
-        "A database: React is not a database; it's a UI library.",
-      ],
-    },
   },
   {
     id: "q2",
     text: "What is JSX?",
     answers: [
-      "A syntax extension for JavaScript that looks like XML",
-      "A separate programming language",
-      "A built-in function in React",
-      "A tool for managing state",
+      {
+        answer: "A syntax extension for JavaScript that looks like XML",
+        explanation:
+          "Correct! JSX allows us to write HTML-like syntax directly in JavaScript code.",
+      },
+      {
+        answer: "A separate programming language",
+        explanation:
+          "This is incorrect. JSX is not a separate language; it is a syntax extension for JavaScript.",
+      },
+      {
+        answer: "A built-in function in React",
+        explanation:
+          "This is incorrect. JSX is not a function; it is a syntax used in React.",
+      },
+      {
+        answer: "A tool for managing state",
+        explanation:
+          "This is incorrect. JSX is used for UI components, not for managing state.",
+      },
     ],
-    explanations: {
-      correct:
-        "JSX is a syntax extension for JavaScript that allows you to write HTML-like code in your JavaScript files.",
-      incorrect: [
-        "A separate programming language: JSX is not a separate language. It's an extension of JavaScript.",
-        "A built-in function in React: JSX is not a function, it's a syntax extension.",
-        "A tool for managing state: JSX has nothing to do with managing state; it's for writing UI components.",
-      ],
-    },
   },
   {
     id: "q3",
     text: "Which hook is used to manage state in a functional component?",
-    answers: ["useState", "useEffect", "useReducer", "useContext"],
-    explanations: {
-      correct:
-        "useState is the hook used to manage state in a functional component in React.",
-      incorrect: [
-        "useEffect: useEffect is used for side effects, not for managing state.",
-        "useReducer: useReducer is an alternative to useState but for more complex state management.",
-        "useContext: useContext is used for accessing context, not for managing local state.",
-      ],
-    },
+    answers: [
+      {
+        answer: "useState",
+        explanation:
+          "Correct! useState is the hook used to manage state in functional components.",
+      },
+      {
+        answer: "useEffect",
+        explanation:
+          "This is incorrect. useEffect is used for performing side effects in functional components.",
+      },
+      {
+        answer: "useReducer",
+        explanation:
+          "This is incorrect. useReducer is used for more complex state management, typically when state depends on previous state.",
+      },
+      {
+        answer: "useContext",
+        explanation:
+          "This is incorrect. useContext is used to consume context in a component, not for managing state.",
+      },
+    ],
   },
   {
     id: "q4",
     text: "What is the purpose of useEffect in React?",
     answers: [
-      "To perform side effects in a functional component",
-      "To manage component state",
-      "To create a new component",
-      "To update the UI directly",
+      {
+        answer: "To perform side effects in a functional component",
+        explanation:
+          "Correct! useEffect is used to perform side effects like data fetching or DOM manipulation in functional components.",
+      },
+      {
+        answer: "To manage component state",
+        explanation:
+          "This is incorrect. useState is used to manage state, while useEffect is for side effects.",
+      },
+      {
+        answer: "To create a new component",
+        explanation:
+          "This is incorrect. useEffect doesn't create components, it manages side effects in existing components.",
+      },
+      {
+        answer: "To update the UI directly",
+        explanation:
+          "This is incorrect. useEffect does not directly update the UI; it runs after render and can trigger changes.",
+      },
     ],
-    explanations: {
-      correct:
-        "useEffect is used to perform side effects in functional components, such as fetching data or updating the DOM.",
-      incorrect: [
-        "To manage component state: useEffect is not for managing state; useState or useReducer handle state management.",
-        "To create a new component: useEffect does not create components, it handles side effects in already existing ones.",
-        "To update the UI directly: useEffect doesn't directly manipulate the UI; it manages side effects after the render.",
-      ],
-    },
   },
   {
     id: "q5",
     text: "What is the virtual DOM in React?",
     answers: [
-      "A lightweight copy of the actual DOM that React uses to optimize rendering",
-      "A completely different version of the real DOM",
-      "A database where components are stored",
-      "A library for managing routes",
+      {
+        answer:
+          "A lightweight copy of the actual DOM that React uses to optimize rendering",
+        explanation:
+          "Correct! The virtual DOM helps React optimize performance by reducing direct manipulation of the actual DOM.",
+      },
+      {
+        answer: "A completely different version of the real DOM",
+        explanation:
+          "This is incorrect. The virtual DOM is a lightweight copy of the real DOM, not a completely different version.",
+      },
+      {
+        answer: "A database where components are stored",
+        explanation:
+          "This is incorrect. The virtual DOM is not a database; it is a representation of the UI that React uses to efficiently update the actual DOM.",
+      },
+      {
+        answer: "A library for managing routes",
+        explanation:
+          "This is incorrect. The virtual DOM is not related to routing; it's a performance optimization mechanism.",
+      },
     ],
-    explanations: {
-      correct:
-        "The virtual DOM is a lightweight copy of the actual DOM. React uses it to optimize rendering performance by comparing the virtual DOM with the real DOM.",
-      incorrect: [
-        "A completely different version of the real DOM: The virtual DOM is not a separate DOM, but a lightweight copy.",
-        "A database where components are stored: The virtual DOM is not a database; it's part of React's rendering system.",
-        "A library for managing routes: This is not true. React Router is used for routing, not the virtual DOM.",
-      ],
-    },
   },
   {
     id: "q6",
     text: "Which method is used to pass data from a parent component to a child component?",
-    answers: ["Props", "State", "Context API", "Redux"],
-    explanations: {
-      correct:
-        "Props are used to pass data from a parent component to a child component in React.",
-      incorrect: [
-        "State: State is used for managing data within a component, not for passing data between components.",
-        "Context API: The Context API is used for global state management, not for passing data from parent to child.",
-        "Redux: Redux is a state management library, and although it can be used to share data, it is not specifically for passing data from parent to child.",
-      ],
-    },
+    answers: [
+      {
+        answer: "Props",
+        explanation:
+          "Correct! Props are used to pass data from a parent component to a child component in React.",
+      },
+      {
+        answer: "State",
+        explanation:
+          "This is incorrect. State is local to a component and cannot be directly passed between components like props.",
+      },
+      {
+        answer: "Context API",
+        explanation:
+          "This is incorrect. The Context API is used for passing data through the component tree, but props are still the primary way to pass data between parent and child.",
+      },
+      {
+        answer: "Redux",
+        explanation:
+          "This is incorrect. Redux is a state management library for managing global state, not for passing data between parent and child.",
+      },
+    ],
   },
   {
     id: "q7",
     text: "What is React Router used for?",
     answers: [
-      "Handling navigation and routing in a React application",
-      "Managing global state",
-      "Fetching data from an API",
-      "Optimizing component rendering",
+      {
+        answer: "Handling navigation and routing in a React application",
+        explanation:
+          "Correct! React Router is used for handling navigation and routing between different pages or views in a React application.",
+      },
+      {
+        answer: "Managing global state",
+        explanation:
+          "This is incorrect. React Router is not for state management. Redux or Context API is used for managing global state.",
+      },
+      {
+        answer: "Fetching data from an API",
+        explanation:
+          "This is incorrect. React Router is for routing, not for data fetching. Data fetching is typically done with fetch or axios.",
+      },
+      {
+        answer: "Optimizing component rendering",
+        explanation:
+          "This is incorrect. React Router doesn't optimize rendering. It handles navigation between views.",
+      },
     ],
-    explanations: {
-      correct:
-        "React Router is used for handling navigation and routing in a React application.",
-      incorrect: [
-        "Managing global state: React Router doesn't handle global state management, for that, you can use tools like Redux or the Context API.",
-        "Fetching data from an API: React Router is for navigation, not for fetching data.",
-        "Optimizing component rendering: React Router does not optimize rendering. It's specifically for routing.",
-      ],
-    },
   },
   {
     id: "q8",
     text: "Which of the following is true about React components?",
     answers: [
-      "Components can be functional or class-based",
-      "Components cannot have state",
-      "Components must always be class-based",
-      "Components can only be used once in an application",
+      {
+        answer: "Components can be functional or class-based",
+        explanation:
+          "Correct! React components can either be functional or class-based, though functional components are now more commonly used.",
+      },
+      {
+        answer: "Components cannot have state",
+        explanation:
+          "This is incorrect. Both functional and class components can have state in React.",
+      },
+      {
+        answer: "Components must always be class-based",
+        explanation:
+          "This is incorrect. Functional components are now preferred in React.",
+      },
+      {
+        answer: "Components can only be used once in an application",
+        explanation:
+          "This is incorrect. Components can be reused multiple times within an application.",
+      },
     ],
-    explanations: {
-      correct:
-        "Components in React can be either functional or class-based, and both can have state.",
-      incorrect: [
-        "Components cannot have state: Both functional and class-based components can have state.",
-        "Components must always be class-based: React supports both functional and class-based components.",
-        "Components can only be used once in an application: Components can be reused multiple times in an application.",
-      ],
-    },
   },
   {
     id: "q9",
     text: "What is the Context API used for?",
     answers: [
-      "To manage global state and avoid prop drilling",
-      "To create new components",
-      "To fetch data from an API",
-      "To optimize rendering performance",
+      {
+        answer: "To manage global state and avoid prop drilling",
+        explanation:
+          "Correct! The Context API allows you to share values like global state across all levels of your component tree.",
+      },
+      {
+        answer: "To create new components",
+        explanation:
+          "This is incorrect. The Context API doesn't create components; it helps manage and share data across components.",
+      },
+      {
+        answer: "To fetch data from an API",
+        explanation:
+          "This is incorrect. The Context API is for managing state, not for fetching data.",
+      },
+      {
+        answer: "To optimize rendering performance",
+        explanation:
+          "This is incorrect. The Context API helps share state but doesn't directly optimize rendering performance.",
+      },
     ],
-    explanations: {
-      correct:
-        "The Context API is used for managing global state and avoiding prop drilling by allowing data to be passed directly to components in the component tree.",
-      incorrect: [
-        "To create new components: The Context API is not for creating components; it manages global state.",
-        "To fetch data from an API: The Context API does not fetch data. It is used to manage and share state.",
-        "To optimize rendering performance: While Context can improve code structure, it is not specifically designed to optimize rendering.",
-      ],
-    },
   },
   {
     id: "q10",
     text: "What does the key prop do in a list of elements?",
     answers: [
-      "Helps React identify which items have changed, are added, or removed",
-      "Defines a unique ID for styling elements",
-      "Adds event listeners to each list item",
-      "Determines the order of rendering for elements",
+      {
+        answer:
+          "Helps React identify which items have changed, are added, or removed",
+        explanation:
+          "Correct! The key prop helps React efficiently update and re-render items in a list.",
+      },
+      {
+        answer: "Defines a unique ID for styling elements",
+        explanation:
+          "This is incorrect. The key prop is not used for styling. It's used for identifying elements in a list during rendering.",
+      },
+      {
+        answer: "Adds event listeners to each list item",
+        explanation:
+          "This is incorrect. The key prop doesn't add event listeners, it's used for tracking list items in React's reconciliation process.",
+      },
+      {
+        answer: "Determines the order of rendering for elements",
+        explanation:
+          "This is incorrect. The key prop is used for identifying items, but it doesn't directly affect the order of rendering.",
+      },
     ],
-    explanations: {
-      correct:
-        "The key prop helps React identify which items in a list have changed, been added, or removed, which helps with efficient re-rendering.",
-      incorrect: [
-        "Defines a unique ID for styling elements: The key is not for styling but for identifying elements in a list.",
-        "Adds event listeners to each list item: The key does not handle events; it only helps React identify items in a list.",
-        "Determines the order of rendering for elements: The key does not affect the rendering order, it helps React identify changes in the list.",
-      ],
-    },
   },
 ];

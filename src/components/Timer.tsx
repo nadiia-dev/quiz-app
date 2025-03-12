@@ -7,7 +7,6 @@ interface Props {
 
 const Timer = ({ timeout, onTimeout }: Props) => {
   const [timerValue, setTimerValue] = useState(timeout);
-  console.log(timeout);
 
   useEffect(() => {
     if (!onTimeout) return;
