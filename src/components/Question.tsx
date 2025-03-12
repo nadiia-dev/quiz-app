@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Answers from "./Answers";
 import Timer from "./Timer";
 import questions from "../../questions";
@@ -20,13 +20,18 @@ const Question = ({ index, onSelectAnswer, onSkipAnswer }: Props) => {
     isCorrect: false,
   });
 
-  let timer = 10000;
-  if (selectedAnswer.answer) {
-    timer = 1000;
-  }
-  if (selectedAnswer.isCorrect !== null) {
-    timer = 2000;
-  }
+  const [timer, setTimer] = useState(15000);
+
+  useEffect(() => {
+    if (selectedAnswer.answer === "") {
+      setTimer(15000);
+    } else if (selectedAnswer.isCorrect !== null) {
+      setTimer(2000);
+    } else {
+      setTimer(1000);
+    }
+  }, [selectedAnswer]);
+
   const handleSelectAnswer = (answer: string | null) => {
     if (answer === null) answer = "";
     setSelectedAnswer({ answer, isCorrect: null });
